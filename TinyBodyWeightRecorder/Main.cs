@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TinyBodyWeightRecorder.Models;
 
@@ -42,6 +38,7 @@ namespace TinyBodyWeightRecorder
             recordData.DataSource = bodyWights;
             recordData.Sort(recordData.Columns[0], ListSortDirection.Descending);
 
+            // グリッドのセル編集後の入力チェック
             recordData.CellValidating += (s,args) =>
             {
                 if(args.ColumnIndex == 1)
