@@ -41,6 +41,18 @@ namespace TinyBodyWeightRecorder
             // グリッドバインド
             recordData.DataSource = bodyWights;
             recordData.Sort(recordData.Columns[0], ListSortDirection.Descending);
+
+            recordData.CellValidating += (s,args) =>
+            {
+                if(args.ColumnIndex == 1)
+                {
+                    var temp = 0M;
+                    if(! Decimal.TryParse(args.FormattedValue.ToString(),out temp))
+                    {
+                        recordData.CancelEdit();
+                    }
+                }
+            };
         }
 
         /// <summary>
