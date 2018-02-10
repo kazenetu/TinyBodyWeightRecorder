@@ -29,14 +29,14 @@ namespace TinyBodyWeightRecorder
         /// <param name="e"></param>
         private void Main_Load(object sender, EventArgs e)
         {
-            // 登録データ初期化
-            clerInputControl();
-
             // 体重情報コレクションクラスを取得
             var bodyWights = BodyWights.GetInstance();
 
             // データ読み込み
             bodyWights.Load(DefaultFileName);
+
+            // 入力コントロールの初期化
+            clerInputControl();
 
             // グリッドバインド
             recordData.DataSource = bodyWights;
@@ -96,8 +96,16 @@ namespace TinyBodyWeightRecorder
         /// </summary>
         private void clerInputControl()
         {
+            var bodyWights = BodyWights.GetInstance();
+
             dateTimePicker.Value = DateTime.Now.Date;
             bodyWight.Value = 0M;
+
+            // 最終登録日の体重を設定する
+            if (bodyWights.Any())
+            {
+                bodyWight.Value = bodyWights.OrderByDescending(item => item.WeighingDate).First().Wight;
+            }
         }
 
         #endregion
