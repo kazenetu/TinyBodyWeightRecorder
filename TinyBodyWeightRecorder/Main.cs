@@ -62,6 +62,12 @@ namespace TinyBodyWeightRecorder
                 return;
             }
 
+            // 体重が0以下の場合はそのまま終了
+            if (bodyWight.Value <= 0M)
+            {
+                return;
+            }
+
             // 体重情報を追加
             bodyWights.Add(new BodyWight(inputDate, bodyWight.Value));
             recordData.Sort(recordData.Columns[0], ListSortDirection.Descending);
