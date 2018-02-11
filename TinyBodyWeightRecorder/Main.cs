@@ -9,7 +9,10 @@ namespace TinyBodyWeightRecorder
 {
     public partial class Main : Form
     {
-        private const string DefaultFileName = "data.json";
+        /// <summary>
+        /// ファイル名の初期値
+        /// </summary>
+        private const string DefaultFileName = "data.txt";
 
         public Main()
         {
