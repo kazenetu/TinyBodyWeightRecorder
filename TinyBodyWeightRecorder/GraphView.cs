@@ -33,7 +33,7 @@ namespace TinyBodyWeightRecorder
             var bodyWights = BodyWights.GetInstance();
 
             // 検索日付コントロールの設定
-            targetDateFrom.Value = bodyWights.Min(item=>item.WeighingDate).Date;
+            targetDateFrom.Value = bodyWights.Min(item => item.WeighingDate).Date;
             targetDateTo.Value = bodyWights.Max(item => item.WeighingDate).Date;
 
             // 検索ボタンクリックイベント実行
