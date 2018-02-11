@@ -83,6 +83,19 @@ namespace TinyBodyWeightRecorder
         }
 
         /// <summary>
+        /// 体重入力コントロールのキーダウン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bodyWight_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                add.PerformClick();
+            }
+        }
+
+        /// <summary>
         /// ファイル保存
         /// </summary>
         /// <param name="sender"></param>
@@ -94,6 +107,19 @@ namespace TinyBodyWeightRecorder
 
             // データ保存
             bodyWights.Save(DefaultFileName);
+        }
+
+        /// <summary>
+        /// グラフ表示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItemGraph_Click(object sender, EventArgs e)
+        {
+            using(var window = new  GraphView())
+            {
+                window.ShowDialog();
+            }
         }
 
         #endregion

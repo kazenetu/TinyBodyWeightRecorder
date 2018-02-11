@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.recordData = new System.Windows.Forms.DataGridView();
+            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBodyWight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.add = new System.Windows.Forms.Button();
             this.bodyWight = new System.Windows.Forms.NumericUpDown();
@@ -43,8 +45,6 @@
             this.MenuItemGraph = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextRowRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBodyWight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordData)).BeginInit();
             this.panel1.SuspendLayout();
@@ -88,6 +88,26 @@
             this.recordData.Size = new System.Drawing.Size(347, 328);
             this.recordData.TabIndex = 4;
             // 
+            // ColumnDate
+            // 
+            this.ColumnDate.DataPropertyName = "WeighingDate";
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnDate.HeaderText = "日付";
+            this.ColumnDate.Name = "ColumnDate";
+            this.ColumnDate.ReadOnly = true;
+            // 
+            // ColumnBodyWight
+            // 
+            this.ColumnBodyWight.DataPropertyName = "Wight";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnBodyWight.HeaderText = "体重";
+            this.ColumnBodyWight.Name = "ColumnBodyWight";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.add);
@@ -118,6 +138,7 @@
             this.bodyWight.Size = new System.Drawing.Size(92, 19);
             this.bodyWight.TabIndex = 1;
             this.bodyWight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.bodyWight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.bodyWight_KeyDown);
             // 
             // dateTimePicker
             // 
@@ -151,7 +172,7 @@
             // MenuItemSaveFile
             // 
             this.MenuItemSaveFile.Name = "MenuItemSaveFile";
-            this.MenuItemSaveFile.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemSaveFile.Size = new System.Drawing.Size(98, 22);
             this.MenuItemSaveFile.Text = "保存";
             this.MenuItemSaveFile.Click += new System.EventHandler(this.MenuItemSaveFile_Click);
             // 
@@ -160,6 +181,7 @@
             this.MenuItemGraph.Name = "MenuItemGraph";
             this.MenuItemGraph.Size = new System.Drawing.Size(68, 20);
             this.MenuItemGraph.Text = "グラフ表示";
+            this.MenuItemGraph.Click += new System.EventHandler(this.MenuItemGraph_Click);
             // 
             // contextMain
             // 
@@ -173,26 +195,6 @@
             this.contextRowRemove.Name = "contextRowRemove";
             this.contextRowRemove.Size = new System.Drawing.Size(98, 22);
             this.contextRowRemove.Text = "削除";
-            // 
-            // ColumnDate
-            // 
-            this.ColumnDate.DataPropertyName = "WeighingDate";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnDate.HeaderText = "日付";
-            this.ColumnDate.Name = "ColumnDate";
-            this.ColumnDate.ReadOnly = true;
-            // 
-            // ColumnBodyWight
-            // 
-            this.ColumnBodyWight.DataPropertyName = "Wight";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnBodyWight.HeaderText = "体重";
-            this.ColumnBodyWight.Name = "ColumnBodyWight";
             // 
             // Main
             // 
