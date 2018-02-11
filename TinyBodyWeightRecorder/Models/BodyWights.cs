@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using System.IO;
 
 namespace TinyBodyWeightRecorder.Models
 {
@@ -34,35 +33,57 @@ namespace TinyBodyWeightRecorder.Models
         /// <summary>
         /// データ保存
         /// </summary>
-        /// <param name="fileName">ファイル名</param>
+        /// <param name="filPath">ファイルパス</param>
         /// <returns>保存結果</returns>
-        public bool Save(string fileName)
+        public bool Save(string filPath)
         {
-            // TODO 保存処理
+            // 保存処理
+            using (var fs = new StreamWriter(filPath, false))
+            {
+                foreach (var item in Items)
+                {
+                    fs.WriteLine(string.Format("{0},{1}",item.WeighingDate,item.Wight));
+                }
+            }
 
-            return false;
+            return true;
         }
 
         /// <summary>
         /// データ読み込み
         /// </summary>
-        /// <param name="fileName">ファイル名</param>
+        /// <param name="filPath">ファイルパス</param>
         /// <returns>読み込み結果</returns>
-        public bool Load(string fileName)
+        public bool Load(string filPath)
         {
-            // HACK 読み込み処理
+            // ファイルの存在確認
+            if (!File.Exists(filPath))
+            {
+                return false;
+            }
 
-            Items.Add(new BodyWight(DateTime.Parse("2018/02/05"), 55.4M));
-            Items.Add(new BodyWight(DateTime.Parse("2018/02/06"), 55.5M));
-            Items.Add(new BodyWight(DateTime.Parse("2018/02/07"), 55.6M));
-            Items.Add(new BodyWight(DateTime.Parse("2018/02/08"), 55.7M));
-            Items.Add(new BodyWight(DateTime.Parse("2018/02/01"), 55));
-            Items.Add(new BodyWight(DateTime.Parse("2018/02/02"), 55.1M));
-            Items.Add(new BodyWight(DateTime.Parse("2018/02/03"), 55.2M));
-            Items.Add(new BodyWight(DateTime.Parse("2018/02/04"), 55.3M));
+            // 読み込み処理
+            using (var fs = new StreamReader(filPath))
+            {
+                DateTime inputDate;
+                decimal inputWeght;
 
+                while (!fs.EndOfStream)
+                {
+                    // 一行を読み込み
+                    var values = fs.ReadLine().Split(',');
 
-            return false;
+                    // カンマ区切りで2カラム以上、DateTimeとdecimalの場合はアイテム追加
+                    if (values.Length >= 2
+                         && DateTime.TryParse(values[0], out inputDate)
+                         && decimal.TryParse(values[1], out inputWeght))
+                    {
+                        Items.Add(new BodyWight(inputDate,inputWeght));
+                    }
+                }
+            }
+
+            return true;
         }
 
         #endregion
