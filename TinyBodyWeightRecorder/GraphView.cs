@@ -32,6 +32,13 @@ namespace TinyBodyWeightRecorder
             // 体重情報コレクションクラスを取得
             var bodyWights = BodyWights.GetInstance();
 
+            // 体重情報が存在しない場合は検索コントロールを無効にして終了
+            if (!bodyWights.Any())
+            {
+                searchPanel.Enabled = false;
+                return;
+            }
+
             // 検索日付コントロールの設定
             targetDateFrom.Value = bodyWights.Min(item => item.WeighingDate).Date;
             targetDateTo.Value = bodyWights.Max(item => item.WeighingDate).Date;
