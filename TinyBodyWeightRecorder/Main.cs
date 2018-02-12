@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using TinyBodyWeightRecorder.Models;
+using TinyBodyWeightRecorder.Utilities;
 
 namespace TinyBodyWeightRecorder
 {
@@ -28,6 +29,9 @@ namespace TinyBodyWeightRecorder
         /// <param name="e"></param>
         private void Main_Load(object sender, EventArgs e)
         {
+            // 設定ファイルの読み込み・設定
+            WindowStting.Load(this);
+
             // 体重情報コレクションクラスを取得
             var bodyWights = BodyWights.GetInstance();
 
@@ -151,6 +155,9 @@ namespace TinyBodyWeightRecorder
                         return;
                 }
             }
+
+            // 設定ファイルを作成
+            WindowStting.Save(this);
         }
         #endregion
 
