@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.recordData = new System.Windows.Forms.DataGridView();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,9 +91,9 @@
             // ColumnDate
             // 
             this.ColumnDate.DataPropertyName = "WeighingDate";
-            dataGridViewCellStyle13.Format = "d";
-            dataGridViewCellStyle13.NullValue = null;
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle15.Format = "d";
+            dataGridViewCellStyle15.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle15;
             this.ColumnDate.HeaderText = "日付";
             this.ColumnDate.Name = "ColumnDate";
             this.ColumnDate.ReadOnly = true;
@@ -101,10 +101,10 @@
             // ColumnBodyWight
             // 
             this.ColumnBodyWight.DataPropertyName = "Wight";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "N2";
-            dataGridViewCellStyle14.NullValue = "0";
-            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "N2";
+            dataGridViewCellStyle16.NullValue = "0";
+            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle16;
             this.ColumnBodyWight.HeaderText = "体重";
             this.ColumnBodyWight.Name = "ColumnBodyWight";
             // 
@@ -208,6 +208,7 @@
             this.MaximumSize = new System.Drawing.Size(370, 1000);
             this.MinimumSize = new System.Drawing.Size(370, 500);
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "簡易版体重記録ツール";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
