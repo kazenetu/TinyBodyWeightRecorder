@@ -135,7 +135,7 @@ namespace TinyBodyWeightRecorder
             // 体重情報コレクションクラスを取得
             var bodyWights = BodyWights.GetInstance();
 
-            if (bodyWights.Saved)
+            if (!bodyWights.Saved)
             {
                 // 保存確認
                 var result = MessageBox.Show("編集されています", "保存しますか？", MessageBoxButtons.YesNoCancel);
