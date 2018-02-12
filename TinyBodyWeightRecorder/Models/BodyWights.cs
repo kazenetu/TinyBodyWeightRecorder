@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Text;
 
 namespace TinyBodyWeightRecorder.Models
 {
@@ -11,10 +12,38 @@ namespace TinyBodyWeightRecorder.Models
     /// <remarks>シングルトン</remarks>
     public class BodyWights : BindingList<BodyWight>
     {
+        #region クラスフィールド
+
         /// <summary>
         /// インスタンス
         /// </summary>
         private static BodyWights instance = null;
+
+        #endregion
+
+        #region フィールド
+
+        /// <summary>
+        /// ロード時のデータ
+        /// </summary>
+        private string loadedFileData = string.Empty;
+
+        #endregion
+
+        #region プロパティ
+
+        /// <summary>
+        /// 保存済みか否か
+        /// </summary>
+        public bool Saved
+        {
+            get
+            {
+                return loadedFileData == getSaveData();
+            }
+        }
+
+        #endregion
 
         #region コンストラクタ
 
@@ -22,7 +51,7 @@ namespace TinyBodyWeightRecorder.Models
         /// コンストラクタ
         /// </summary>
         /// <remarks>シングルトンのためプライベートメソッド</remarks>
-        private  BodyWights()
+        private BodyWights()
         {
         }
 
@@ -37,14 +66,17 @@ namespace TinyBodyWeightRecorder.Models
         /// <returns>保存結果</returns>
         public bool Save(string filPath)
         {
+            // 保存用データ取得
+            var saveData = getSaveData();
+
             // 保存処理
             using (var fs = new StreamWriter(filPath, false))
             {
-                foreach (var item in Items)
-                {
-                    fs.WriteLine(string.Format("{0},{1}",item.WeighingDate,item.Wight));
-                }
+                fs.Write(saveData);
             }
+
+            // 読み込みデータを格納
+            loadedFileData = saveData;
 
             return true;
         }
@@ -71,7 +103,8 @@ namespace TinyBodyWeightRecorder.Models
                 while (!fs.EndOfStream)
                 {
                     // 一行を読み込み
-                    var values = fs.ReadLine().Split(',');
+                    var lineData = fs.ReadLine();
+                    var values = lineData.Split(',');
 
                     // カンマ区切りで2カラム以上、DateTimeとdecimalの場合はアイテム追加
                     if (values.Length >= 2
@@ -81,9 +114,28 @@ namespace TinyBodyWeightRecorder.Models
                         Items.Add(new BodyWight(inputDate,inputWeght));
                     }
                 }
+
+                // 読み込みデータを格納
+                loadedFileData = getSaveData();
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// データ保存用文字列の取得
+        /// </summary>
+        /// <returns>データ保存用文字列</returns>
+        private string getSaveData()
+        {
+            StringBuilder result = new StringBuilder();
+
+            foreach (var item in Items)
+            {
+                result.AppendLine(string.Format("{0},{1}", item.WeighingDate, item.Wight));
+            }
+
+            return result.ToString();
         }
 
         #endregion
