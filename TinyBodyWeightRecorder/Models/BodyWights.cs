@@ -122,6 +122,10 @@ namespace TinyBodyWeightRecorder.Models
             return true;
         }
 
+        #endregion
+
+        #region プライベートメソッド
+
         /// <summary>
         /// データ保存用文字列の取得
         /// </summary>

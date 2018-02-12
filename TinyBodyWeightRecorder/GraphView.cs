@@ -22,6 +22,8 @@ namespace TinyBodyWeightRecorder
             InitializeComponent();
         }
 
+        #region イベント
+
         /// <summary>
         /// ロードイベント
         /// </summary>
@@ -67,6 +69,10 @@ namespace TinyBodyWeightRecorder
             // グラフ表示
             drawGraph(targetFrom, targetTo);
         }
+
+        #endregion
+
+        #region プライベートメソッド
 
         /// <summary>
         /// グラフ表示
@@ -116,4 +122,6 @@ namespace TinyBodyWeightRecorder
             chart1.ChartAreas["ChartArea1"].AxisY.Interval = 0.5;
         }
     }
+
+    #endregion
 }

@@ -11,7 +11,7 @@ namespace TinyBodyWeightRecorder.Utilities
     /// </summary>
     public class WindowStting
     {
-        #region "定数"
+        #region 定数
 
         /// <summary>
         /// 設定ファイル名
@@ -20,7 +20,7 @@ namespace TinyBodyWeightRecorder.Utilities
 
         #endregion
 
-        #region "クラスメソッド"
+        #region クラスメソッド
 
         /// <summary>
         /// 対象フォームの設定ファイル保存
@@ -85,6 +85,9 @@ namespace TinyBodyWeightRecorder.Utilities
                 }
             }
         }
+        #endregion
+
+        #region プライベートクラスメソッド
 
         /// <summary>
         /// 保存対象のキー名を取得
