@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.recordData = new System.Windows.Forms.DataGridView();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +66,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.973045F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.02695F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(353, 371);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(354, 437);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // recordData
@@ -81,19 +81,19 @@
             this.ColumnBodyWight});
             this.recordData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recordData.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.recordData.Location = new System.Drawing.Point(3, 40);
+            this.recordData.Location = new System.Drawing.Point(3, 46);
             this.recordData.MultiSelect = false;
             this.recordData.Name = "recordData";
             this.recordData.RowTemplate.Height = 21;
-            this.recordData.Size = new System.Drawing.Size(347, 328);
+            this.recordData.Size = new System.Drawing.Size(348, 388);
             this.recordData.TabIndex = 4;
             // 
             // ColumnDate
             // 
             this.ColumnDate.DataPropertyName = "WeighingDate";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Format = "d";
+            dataGridViewCellStyle11.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle11;
             this.ColumnDate.HeaderText = "日付";
             this.ColumnDate.Name = "ColumnDate";
             this.ColumnDate.ReadOnly = true;
@@ -101,10 +101,10 @@
             // ColumnBodyWight
             // 
             this.ColumnBodyWight.DataPropertyName = "Wight";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = "0";
+            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle12;
             this.ColumnBodyWight.HeaderText = "体重";
             this.ColumnBodyWight.Name = "ColumnBodyWight";
             // 
@@ -116,7 +116,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(347, 31);
+            this.panel1.Size = new System.Drawing.Size(348, 37);
             this.panel1.TabIndex = 5;
             // 
             // add
@@ -157,7 +157,7 @@
             this.MenuItemGraph});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(353, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(354, 24);
             this.menuStripMain.TabIndex = 1;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -200,12 +200,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 395);
+            this.ClientSize = new System.Drawing.Size(354, 461);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStripMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStripMain;
-            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(370, 1000);
+            this.MinimumSize = new System.Drawing.Size(370, 500);
             this.Name = "Main";
             this.Text = "簡易版体重記録ツール";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
