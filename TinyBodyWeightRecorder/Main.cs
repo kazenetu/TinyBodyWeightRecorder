@@ -10,17 +10,21 @@ namespace TinyBodyWeightRecorder
 {
     public partial class Main : Form
     {
+        #region 定数
+
         /// <summary>
         /// ファイル名の初期値
         /// </summary>
         private const string DefaultFileName = "data.txt";
+
+        #endregion
 
         public Main()
         {
             InitializeComponent();
         }
 
-        #region "イベント"
+        #region イベント
 
         /// <summary>
         /// 初期化処理
@@ -161,7 +165,7 @@ namespace TinyBodyWeightRecorder
         }
         #endregion
 
-        #region "プライベートメソッド"
+        #region プライベートメソッド
 
         /// <summary>
         /// 入力コントロールのクリア
