@@ -137,9 +137,18 @@ namespace TinyBodyWeightRecorder
 
             if (bodyWights.Saved)
             {
-                if (MessageBox.Show("保存しますか？","編集されています。",MessageBoxButtons.YesNo) == DialogResult.No)
+                // 保存確認
+                var result = MessageBox.Show("編集されています", "保存しますか？", MessageBoxButtons.YesNoCancel);
+
+                // 選択内容ごとの処理
+                switch (result)
                 {
-                    e.Cancel = true;
+                    case DialogResult.Yes:
+                        bodyWights.Save(DefaultFileName);
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        return;
                 }
             }
         }
