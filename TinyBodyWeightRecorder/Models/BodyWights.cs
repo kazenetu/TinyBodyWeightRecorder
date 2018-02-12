@@ -57,6 +57,23 @@ namespace TinyBodyWeightRecorder.Models
 
         #endregion
 
+        #region クラスメソッド
+
+        /// <summary>
+        /// インスタンス取得
+        /// </summary>
+        /// <returns>インスタンス</returns>
+        public static BodyWights GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new BodyWights();
+            }
+            return instance;
+        }
+
+        #endregion
+
         #region メソッド
 
         /// <summary>
@@ -140,23 +157,6 @@ namespace TinyBodyWeightRecorder.Models
             }
 
             return result.ToString();
-        }
-
-        #endregion
-
-        #region クラスメソッド
-
-        /// <summary>
-        /// インスタンス取得
-        /// </summary>
-        /// <returns>インスタンス</returns>
-        public static BodyWights GetInstance()
-        {
-            if(instance == null)
-            {
-                instance = new BodyWights();
-            }
-            return instance;
         }
 
         #endregion
