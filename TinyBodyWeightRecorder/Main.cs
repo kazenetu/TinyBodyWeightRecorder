@@ -125,6 +125,24 @@ namespace TinyBodyWeightRecorder
             }
         }
 
+        /// <summary>
+        /// 閉じる直前イベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 体重情報コレクションクラスを取得
+            var bodyWights = BodyWights.GetInstance();
+
+            if (bodyWights.Saved)
+            {
+                if (MessageBox.Show("保存しますか？","編集されています。",MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
         #endregion
 
         #region "プライベートメソッド"
