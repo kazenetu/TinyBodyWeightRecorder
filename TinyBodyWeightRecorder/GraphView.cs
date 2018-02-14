@@ -79,12 +79,6 @@ namespace TinyBodyWeightRecorder
             // 体重情報コレクションクラスを取得
             var bodyWights = BodyWights.GetInstance();
 
-            // グラフのクリア
-            chart1.Series.Clear();
-            chart1.Legends.Clear();
-            chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false;
-            chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false;
-
             // 検索対象期間を取得
             var targetItems = bodyWights.Where(item => item.WeighingDate >= targetFrom && item.WeighingDate <= targetTo)?.OrderBy(item => item.WeighingDate);
             if (!targetItems.Any())
