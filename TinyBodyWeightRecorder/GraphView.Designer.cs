@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.HorizontalLineAnnotation horizontalLineAnnotation1 = new System.Windows.Forms.DataVisualization.Charting.HorizontalLineAnnotation();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.HorizontalLineAnnotation horizontalLineAnnotation3 = new System.Windows.Forms.DataVisualization.Charting.HorizontalLineAnnotation();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.searchPanel = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.targetDateFrom = new System.Windows.Forms.DateTimePicker();
-            this.targetDateTo = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.search = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.targetDateTo = new System.Windows.Forms.DateTimePicker();
+            this.targetDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1.SuspendLayout();
             this.searchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -55,7 +55,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(549, 454);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(684, 461);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // searchPanel
@@ -67,29 +67,37 @@
             this.searchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchPanel.Location = new System.Drawing.Point(3, 3);
             this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(543, 39);
+            this.searchPanel.Size = new System.Drawing.Size(678, 39);
             this.searchPanel.TabIndex = 0;
             // 
-            // chart1
+            // search
             // 
-            horizontalLineAnnotation1.Name = "HorizontalLineAnnotation1";
-            this.chart1.Annotations.Add(horizontalLineAnnotation1);
-            chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisY2.Title = "体重";
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart1.Location = new System.Drawing.Point(3, 48);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(543, 403);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
+            this.search.Location = new System.Drawing.Point(274, 9);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(75, 23);
+            this.search.TabIndex = 0;
+            this.search.Text = "検索";
+            this.search.UseVisualStyleBackColor = true;
+            this.search.Click += new System.EventHandler(this.search_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(122, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "～";
+            // 
+            // targetDateTo
+            // 
+            this.targetDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.targetDateTo.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.targetDateTo.Location = new System.Drawing.Point(145, 9);
+            this.targetDateTo.Name = "targetDateTo";
+            this.targetDateTo.Size = new System.Drawing.Size(107, 19);
+            this.targetDateTo.TabIndex = 3;
+            this.targetDateTo.Value = new System.DateTime(2018, 2, 10, 0, 0, 0, 0);
             // 
             // targetDateFrom
             // 
@@ -101,45 +109,37 @@
             this.targetDateFrom.TabIndex = 1;
             this.targetDateFrom.Value = new System.DateTime(2018, 2, 10, 0, 0, 0, 0);
             // 
-            // targetDateTo
+            // chart1
             // 
-            this.targetDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.targetDateTo.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.targetDateTo.Location = new System.Drawing.Point(145, 9);
-            this.targetDateTo.Name = "targetDateTo";
-            this.targetDateTo.Size = new System.Drawing.Size(107, 19);
-            this.targetDateTo.TabIndex = 1;
-            this.targetDateTo.Value = new System.DateTime(2018, 2, 10, 0, 0, 0, 0);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(122, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "～";
-            // 
-            // search
-            // 
-            this.search.Location = new System.Drawing.Point(274, 9);
-            this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(75, 23);
-            this.search.TabIndex = 3;
-            this.search.Text = "検索";
-            this.search.UseVisualStyleBackColor = true;
-            this.search.Click += new System.EventHandler(this.search_Click);
+            horizontalLineAnnotation3.Name = "HorizontalLineAnnotation1";
+            this.chart1.Annotations.Add(horizontalLineAnnotation3);
+            chartArea3.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
+            chartArea3.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea3.AxisY2.Title = "体重";
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chart1.Location = new System.Drawing.Point(3, 48);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(678, 410);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
             // 
             // GraphView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 454);
+            this.ClientSize = new System.Drawing.Size(684, 461);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.MinimumSize = new System.Drawing.Size(640, 480);
             this.Name = "GraphView";
             this.Text = "グラフ";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.GraphView_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.searchPanel.ResumeLayout(false);
