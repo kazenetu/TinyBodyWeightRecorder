@@ -55,7 +55,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(684, 461);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 441);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // searchPanel
@@ -67,7 +67,7 @@
             this.searchPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchPanel.Location = new System.Drawing.Point(3, 3);
             this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Size = new System.Drawing.Size(678, 39);
+            this.searchPanel.Size = new System.Drawing.Size(778, 39);
             this.searchPanel.TabIndex = 0;
             // 
             // search
@@ -128,7 +128,7 @@
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(678, 410);
+            this.chart1.Size = new System.Drawing.Size(778, 390);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
@@ -136,13 +136,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 461);
+            this.ClientSize = new System.Drawing.Size(784, 441);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.MinimumSize = new System.Drawing.Size(640, 480);
+            this.MinimumSize = new System.Drawing.Size(800, 480);
             this.Name = "GraphView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "グラフ";
             this.Load += new System.EventHandler(this.GraphView_Load);
+            this.ResizeEnd += new System.EventHandler(this.GraphView_ResizeEnd);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.searchPanel.ResumeLayout(false);
             this.searchPanel.PerformLayout();

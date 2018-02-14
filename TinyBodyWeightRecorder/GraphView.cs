@@ -65,6 +65,28 @@ namespace TinyBodyWeightRecorder
             drawGraph(targetFrom, targetTo);
         }
 
+        /// <summary>
+        /// リサイズ終了時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GraphView_ResizeEnd(object sender, EventArgs e)
+        {
+            // 幅を高さと同じ単位に変換
+            var tempWidth = (int)(Width * 480M / 800M);
+            var temptHeight = Height;
+
+            // 幅と高さのどちらかを調整
+            if (tempWidth > temptHeight)
+            {
+                Height = (int)(Width * 480M / 800M);
+            }
+            else
+            {
+                Width = (int)(Height * 800M / 480M);
+            }
+        }
+
         #endregion
 
         #region プライベートメソッド
