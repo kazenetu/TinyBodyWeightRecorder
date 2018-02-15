@@ -163,6 +163,49 @@ namespace TinyBodyWeightRecorder
             // 設定ファイルを作成
             WindowStting.Save(this);
         }
+
+        #region グリッドイベント
+
+        /// <summary>
+        /// グリッドでマウスダウン
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void recordData_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // 右クリックの場合はその行を選択しコンテキストメニュー表示に備える
+            if (e.Button == MouseButtons.Right)
+            {
+                recordData.CurrentCell = recordData.Rows[e.RowIndex].Cells[0];
+                recordData.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        /// <summary>
+        ///  グリッド用コンテキストメニュー：削除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void contextRowRemove_Click(object sender, EventArgs e)
+        {
+            // 選択行の日付情報を取得
+            var targetDate = DateTime.Parse(recordData.CurrentRow.Cells[0].Value.ToString()).ToShortDateString();
+
+            // 確認ダイアログを表示
+            var result = MessageBox.Show(string.Format("{0}を削除しますか？", targetDate), "削除の確認", MessageBoxButtons.YesNo);
+
+            // 選択内容ごとの処理
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    // 選択行の削除
+                    recordData.Rows.Remove(recordData.CurrentRow);
+                    break;
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region プライベートメソッド

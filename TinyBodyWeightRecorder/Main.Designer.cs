@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.recordData = new System.Windows.Forms.DataGridView();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +79,7 @@
             this.recordData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnDate,
             this.ColumnBodyWight});
+            this.recordData.ContextMenuStrip = this.contextMain;
             this.recordData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recordData.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.recordData.Location = new System.Drawing.Point(3, 46);
@@ -87,13 +88,14 @@
             this.recordData.RowTemplate.Height = 21;
             this.recordData.Size = new System.Drawing.Size(348, 388);
             this.recordData.TabIndex = 4;
+            this.recordData.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.recordData_CellMouseDown);
             // 
             // ColumnDate
             // 
             this.ColumnDate.DataPropertyName = "WeighingDate";
-            dataGridViewCellStyle15.Format = "d";
-            dataGridViewCellStyle15.NullValue = null;
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle9.Format = "d";
+            dataGridViewCellStyle9.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle9;
             this.ColumnDate.HeaderText = "日付";
             this.ColumnDate.Name = "ColumnDate";
             this.ColumnDate.ReadOnly = true;
@@ -101,10 +103,10 @@
             // ColumnBodyWight
             // 
             this.ColumnBodyWight.DataPropertyName = "Wight";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "N2";
-            dataGridViewCellStyle16.NullValue = "0";
-            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = "0";
+            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle10;
             this.ColumnBodyWight.HeaderText = "体重";
             this.ColumnBodyWight.Name = "ColumnBodyWight";
             // 
@@ -188,13 +190,14 @@
             this.contextMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextRowRemove});
             this.contextMain.Name = "contextMenuStrip1";
-            this.contextMain.Size = new System.Drawing.Size(99, 26);
+            this.contextMain.Size = new System.Drawing.Size(153, 48);
             // 
             // contextRowRemove
             // 
             this.contextRowRemove.Name = "contextRowRemove";
-            this.contextRowRemove.Size = new System.Drawing.Size(98, 22);
+            this.contextRowRemove.Size = new System.Drawing.Size(152, 22);
             this.contextRowRemove.Text = "削除";
+            this.contextRowRemove.Click += new System.EventHandler(this.contextRowRemove_Click);
             // 
             // Main
             // 
