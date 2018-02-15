@@ -146,7 +146,7 @@ namespace TinyBodyWeightRecorder
             if (!bodyWights.Saved)
             {
                 // 保存確認
-                var result = MessageBox.Show("編集されています", "保存しますか？", MessageBoxButtons.YesNoCancel);
+                var result = MessageBox.Show("保存しますか？", "編集されています", MessageBoxButtons.YesNoCancel);
 
                 // 選択内容ごとの処理
                 switch (result)
