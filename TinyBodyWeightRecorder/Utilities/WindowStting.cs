@@ -101,6 +101,7 @@ namespace TinyBodyWeightRecorder.Utilities
             result.Add(nameof(targetForm.Height));
             result.Add(nameof(targetForm.Left));
             result.Add(nameof(targetForm.Top));
+            result.Add("AutoSave");
 
             return result;
         }
