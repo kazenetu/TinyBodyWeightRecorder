@@ -132,7 +132,7 @@ namespace TinyBodyWeightRecorder
         }
 
         /// <summary>
-        /// ファイル保存
+        /// メニュー：ファイル保存
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -146,7 +146,7 @@ namespace TinyBodyWeightRecorder
         }
 
         /// <summary>
-        /// グラフ表示
+        /// メニュー：グラフ表示
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
