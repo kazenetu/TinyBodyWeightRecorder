@@ -143,6 +143,7 @@
             this.Name = "GraphView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "グラフ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GraphView_FormClosing);
             this.Load += new System.EventHandler(this.GraphView_Load);
             this.ResizeEnd += new System.EventHandler(this.GraphView_ResizeEnd);
             this.tableLayoutPanel1.ResumeLayout(false);

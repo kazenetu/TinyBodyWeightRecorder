@@ -26,7 +26,8 @@ namespace TinyBodyWeightRecorder.Utilities
         /// 対象フォームの設定ファイル保存
         /// </summary>
         /// <param name="targetForm">対象フォーム</param>
-        public static void Save(Form targetForm)
+        /// <param name="prefix">設定ファイル名に付与するプレフィックス</param>
+        public static void Save(Form targetForm,string prefix = "")
         {
             var settings = new Dictionary<string, string>();
 
@@ -43,7 +44,8 @@ namespace TinyBodyWeightRecorder.Utilities
             }
 
             // 設定ファイルを作成
-            using (var fs = new StreamWriter(SettingFileName, false))
+            var fileName = string.Format("{0}{1}", prefix, SettingFileName);
+            using (var fs = new StreamWriter(fileName, false))
             {
                 var sw = new DataContractJsonSerializer(typeof(Dictionary<string, string>));
                 sw.WriteObject(fs.BaseStream, settings);
@@ -54,10 +56,14 @@ namespace TinyBodyWeightRecorder.Utilities
         /// 設定ファイルを対象フォームに設定
         /// </summary>
         /// <param name="targetForm">対象フォーム</param>
-        public static void Load(Form targetForm)
+        /// <param name="prefix">設定ファイル名に付与するプレフィックス</param>
+        public static void Load(Form targetForm, string prefix = "")
         {
+            // ファイル名の作成
+            var fileName = string.Format("{0}{1}", prefix, SettingFileName);
+
             // 設定ファイルの確認
-            if (!File.Exists(SettingFileName))
+            if (!File.Exists(fileName))
             {
                 return;
             }
@@ -65,7 +71,7 @@ namespace TinyBodyWeightRecorder.Utilities
             Dictionary<string, string> settings = null;
 
             // 設定ファイルの読み込み
-            using (var fs = new StreamReader(SettingFileName, false))
+            using (var fs = new StreamReader(fileName, false))
             {
                 var sw = new DataContractJsonSerializer(typeof(Dictionary<string, string>));
                 settings = sw.ReadObject(fs.BaseStream) as Dictionary<string, string>;
@@ -98,6 +104,7 @@ namespace TinyBodyWeightRecorder.Utilities
         {
             var result = new List<string>();
 
+            result.Add(nameof(targetForm.Width));
             result.Add(nameof(targetForm.Height));
             result.Add(nameof(targetForm.Left));
             result.Add(nameof(targetForm.Top));

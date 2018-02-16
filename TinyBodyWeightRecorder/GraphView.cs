@@ -4,11 +4,17 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using TinyBodyWeightRecorder.Models;
+using TinyBodyWeightRecorder.Utilities;
 
 namespace TinyBodyWeightRecorder
 {
     public partial class GraphView : Form
     {
+        /// <summary>
+        /// 設定ファイルのプレフィックス
+        /// </summary>
+        private const string FilePrefix = "graph_";
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -26,6 +32,9 @@ namespace TinyBodyWeightRecorder
         /// <param name="e"></param>
         private void GraphView_Load(object sender, EventArgs e)
         {
+            // 設定ファイルの読み込み・設定
+            WindowStting.Load(this,FilePrefix);
+
             // 体重情報コレクションクラスを取得
             var bodyWights = BodyWights.GetInstance();
 
@@ -85,6 +94,17 @@ namespace TinyBodyWeightRecorder
             {
                 Width = (int)(Height * 800M / 480M);
             }
+        }
+
+        /// <summary>
+        /// フォームクローズ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GraphView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 設定ファイルの保存
+            WindowStting.Save(this, FilePrefix);
         }
 
         #endregion
