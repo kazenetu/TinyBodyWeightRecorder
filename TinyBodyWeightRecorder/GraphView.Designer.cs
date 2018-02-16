@@ -114,7 +114,7 @@
             horizontalLineAnnotation1.Name = "HorizontalLineAnnotation1";
             this.chart1.Annotations.Add(horizontalLineAnnotation1);
             chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Days;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
             chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chartArea1.AxisY.MajorGrid.Enabled = false;
             chartArea1.AxisY2.Title = "体重";
