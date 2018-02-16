@@ -19,6 +19,25 @@ namespace TinyBodyWeightRecorder
 
         #endregion
 
+        #region プロパティ
+
+        /// <summary>
+        /// 自動保存
+        /// </summary>
+        public bool AutoSave
+        {
+            set
+            {
+                toolStripMenuItemAutoSave.Checked = value;
+            }
+            get
+            {
+                return toolStripMenuItemAutoSave.Checked;
+            }
+        }
+
+        #endregion
+
         public Main()
         {
             InitializeComponent();
@@ -91,6 +110,12 @@ namespace TinyBodyWeightRecorder
             // 体重情報を追加
             bodyWights.Add(new BodyWight(inputDate, bodyWight.Value));
             recordData.Sort(recordData.Columns[0], ListSortDirection.Descending);
+
+            // 自動保存
+            if (AutoSave)
+            {
+                bodyWights.Save(DefaultFileName);
+            }
         }
 
         /// <summary>
@@ -134,6 +159,17 @@ namespace TinyBodyWeightRecorder
         }
 
         /// <summary>
+        /// メニュー：自動保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripMenuItemAutoSave_Click(object sender, EventArgs e)
+        {
+            // ON/OFFを切り替える
+            toolStripMenuItemAutoSave.Checked = !toolStripMenuItemAutoSave.Checked;
+        }
+
+        /// <summary>
         /// 閉じる直前イベント
         /// </summary>
         /// <param name="sender"></param>
@@ -165,6 +201,20 @@ namespace TinyBodyWeightRecorder
         }
 
         #region グリッドイベント
+
+        /// <summary>
+        /// セル変更
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void recordData_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // 自動保存
+            if (AutoSave)
+            {
+                BodyWights.GetInstance().Save(DefaultFileName);
+            }
+        }
 
         /// <summary>
         /// グリッドでマウスダウン
@@ -200,10 +250,15 @@ namespace TinyBodyWeightRecorder
                 case DialogResult.Yes:
                     // 選択行の削除
                     recordData.Rows.Remove(recordData.CurrentRow);
+
+                    // 自動保存
+                    if (AutoSave)
+                    {
+                        BodyWights.GetInstance().Save(DefaultFileName);
+                    }
                     break;
             }
         }
-
         #endregion
 
         #endregion
@@ -228,5 +283,6 @@ namespace TinyBodyWeightRecorder
         }
 
         #endregion
+
     }
 }

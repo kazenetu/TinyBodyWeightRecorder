@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.recordData = new System.Windows.Forms.DataGridView();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnBodyWight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMain = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextRowRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.add = new System.Windows.Forms.Button();
             this.bodyWight = new System.Windows.Forms.NumericUpDown();
@@ -43,14 +45,14 @@
             this.MenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSaveFile = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemGraph = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMain = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextRowRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemAutoSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordData)).BeginInit();
+            this.contextMain.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bodyWight)).BeginInit();
             this.menuStripMain.SuspendLayout();
-            this.contextMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -89,13 +91,14 @@
             this.recordData.Size = new System.Drawing.Size(348, 388);
             this.recordData.TabIndex = 4;
             this.recordData.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.recordData_CellMouseDown);
+            this.recordData.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.recordData_CellValueChanged);
             // 
             // ColumnDate
             // 
             this.ColumnDate.DataPropertyName = "WeighingDate";
-            dataGridViewCellStyle9.Format = "d";
-            dataGridViewCellStyle9.NullValue = null;
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = null;
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnDate.HeaderText = "日付";
             this.ColumnDate.Name = "ColumnDate";
             this.ColumnDate.ReadOnly = true;
@@ -103,12 +106,26 @@
             // ColumnBodyWight
             // 
             this.ColumnBodyWight.DataPropertyName = "Wight";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N2";
-            dataGridViewCellStyle10.NullValue = "0";
-            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0";
+            this.ColumnBodyWight.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnBodyWight.HeaderText = "体重";
             this.ColumnBodyWight.Name = "ColumnBodyWight";
+            // 
+            // contextMain
+            // 
+            this.contextMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextRowRemove});
+            this.contextMain.Name = "contextMenuStrip1";
+            this.contextMain.Size = new System.Drawing.Size(99, 26);
+            // 
+            // contextRowRemove
+            // 
+            this.contextRowRemove.Name = "contextRowRemove";
+            this.contextRowRemove.Size = new System.Drawing.Size(98, 22);
+            this.contextRowRemove.Text = "削除";
+            this.contextRowRemove.Click += new System.EventHandler(this.contextRowRemove_Click);
             // 
             // panel1
             // 
@@ -156,7 +173,8 @@
             // 
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItemFile,
-            this.MenuItemGraph});
+            this.MenuItemGraph,
+            this.MenuItemOptions});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Size = new System.Drawing.Size(354, 24);
@@ -185,19 +203,22 @@
             this.MenuItemGraph.Text = "グラフ表示";
             this.MenuItemGraph.Click += new System.EventHandler(this.MenuItemGraph_Click);
             // 
-            // contextMain
+            // MenuItemOptions
             // 
-            this.contextMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contextRowRemove});
-            this.contextMain.Name = "contextMenuStrip1";
-            this.contextMain.Size = new System.Drawing.Size(153, 48);
+            this.MenuItemOptions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemAutoSave});
+            this.MenuItemOptions.Name = "MenuItemOptions";
+            this.MenuItemOptions.Size = new System.Drawing.Size(63, 20);
+            this.MenuItemOptions.Text = "オプション";
             // 
-            // contextRowRemove
+            // toolStripMenuItemAutoSave
             // 
-            this.contextRowRemove.Name = "contextRowRemove";
-            this.contextRowRemove.Size = new System.Drawing.Size(152, 22);
-            this.contextRowRemove.Text = "削除";
-            this.contextRowRemove.Click += new System.EventHandler(this.contextRowRemove_Click);
+            this.toolStripMenuItemAutoSave.Checked = true;
+            this.toolStripMenuItemAutoSave.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.toolStripMenuItemAutoSave.Name = "toolStripMenuItemAutoSave";
+            this.toolStripMenuItemAutoSave.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemAutoSave.Text = "自動保存";
+            this.toolStripMenuItemAutoSave.Click += new System.EventHandler(this.toolStripMenuItemAutoSave_Click);
             // 
             // Main
             // 
@@ -217,11 +238,11 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.recordData)).EndInit();
+            this.contextMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bodyWight)).EndInit();
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
-            this.contextMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,6 +264,8 @@
         private System.Windows.Forms.ToolStripMenuItem contextRowRemove;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBodyWight;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemOptions;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAutoSave;
     }
 }
 
