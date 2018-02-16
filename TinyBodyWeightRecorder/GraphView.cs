@@ -131,6 +131,7 @@ namespace TinyBodyWeightRecorder
             chart1.ChartAreas["ChartArea1"].AxisY.Minimum = (double)targetItems.Min(item=>item.Wight)-1;
             chart1.ChartAreas["ChartArea1"].AxisY.Maximum = (double)targetItems.Max(item => item.Wight)+1;
             chart1.ChartAreas["ChartArea1"].AxisY.Interval = 0.5;
+            chart1.ChartAreas["ChartArea1"].AxisX.Interval = 7;
         }
     }
 
