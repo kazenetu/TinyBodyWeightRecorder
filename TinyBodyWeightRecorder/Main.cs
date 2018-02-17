@@ -41,6 +41,9 @@ namespace TinyBodyWeightRecorder
         public Main()
         {
             InitializeComponent();
+
+            // バージョン追加
+            Text += string.Format(" ver {0}",Application.ProductVersion.ToString());
         }
 
         #region イベント
