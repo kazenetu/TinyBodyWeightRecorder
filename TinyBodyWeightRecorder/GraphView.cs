@@ -118,6 +118,8 @@ namespace TinyBodyWeightRecorder
         /// <param name="targetTo">検索対象の終了日付</param>
         private void drawGraph(DateTime targetFrom, DateTime targetTo)
         {
+            chart1.Series.Clear();
+
             // 体重情報コレクションクラスを取得
             var bodyWights = BodyWights.GetInstance();
 
